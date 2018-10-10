@@ -7,18 +7,59 @@ import (
 
 	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/platforms/dji/tello"
+	"gobot.io/x/gobot/platforms/keyboard"
 )
 
 const (
-	// Speed of the drone for left, right, up, down, forward, and backward.
-	Speed = 40
-
-	// RotateSpeed of the drone.
-	RotateSpeed = 50
+	defaultSpeed       = 40
+	defaultRotateSpeed = 50
 )
 
-// Work is the main method where actions are performed on the drone.
-func Work(drone *tello.Driver) {
+// Engine is the main structure for controlling a drone.
+type Engine struct {
+	// Speed of the drone for left, right, up, down, forward, and backward.
+	Speed int
+
+	// RotateSpeed of the drone.
+	RotateSpeed int
+
+	drone *tello.Driver
+	robot *gobot.Robot
+}
+
+// NewEngine will create a new instance of the engine.
+func NewEngine() *Engine {
+	drone := tello.NewDriver("8888")
+	keys := keyboard.NewDriver()
+
+	e := Engine{
+		Speed:       defaultSpeed,
+		RotateSpeed: defaultRotateSpeed,
+		drone:       drone,
+	}
+
+	keys.On(keyboard.Key, func(data interface{}) {
+		e.handleKeyPress(data.(keyboard.KeyEvent))
+	})
+
+	e.robot = gobot.NewRobot("tello",
+		[]gobot.Connection{},
+		[]gobot.Device{keys, drone},
+		func() {
+			e.work()
+		},
+	)
+
+	return &e
+}
+
+// Start the drone and allow input. If autoRun is true, this function will block.
+func (e *Engine) Start(autoRun bool) {
+	e.robot.Start(autoRun)
+}
+
+// work is the main method where actions are performed on the drone.
+func (e *Engine) work() {
 	// initialize mplayer at 60 fps (less fps causes lag in video)
 	mplayer := exec.Command("mplayer", "-fps", "60", "-")
 	mplayerIn, _ := mplayer.StdinPipe()
@@ -28,17 +69,17 @@ func Work(drone *tello.Driver) {
 	}
 
 	// start video streaming from drone
-	drone.On(tello.ConnectedEvent, func(data interface{}) {
+	e.drone.On(tello.ConnectedEvent, func(data interface{}) {
 		log.Println("Connected event received")
-		drone.StartVideo()
-		drone.SetVideoEncoderRate(tello.VideoBitRateAuto)
+		e.drone.StartVideo()
+		e.drone.SetVideoEncoderRate(tello.VideoBitRateAuto)
 		gobot.Every(100*time.Millisecond, func() {
-			drone.StartVideo()
+			e.drone.StartVideo()
 		})
 	})
 
 	// write video frames to mplayer
-	drone.On(tello.VideoFrameEvent, func(data interface{}) {
+	e.drone.On(tello.VideoFrameEvent, func(data interface{}) {
 		pkt := data.([]byte)
 		if _, err := mplayerIn.Write(pkt); err != nil {
 			log.Println(err)
@@ -47,7 +88,7 @@ func Work(drone *tello.Driver) {
 
 	// get flight data events
 	var flightData *tello.FlightData
-	drone.On(tello.FlightDataEvent, func(data interface{}) {
+	e.drone.On(tello.FlightDataEvent, func(data interface{}) {
 		flightData = data.(*tello.FlightData)
 	})
 
@@ -60,16 +101,4 @@ func Work(drone *tello.Driver) {
 			}
 		}
 	})
-}
-
-// resetDroneMovement will set all drone movement to 0.
-func resetDroneMovement(drone *tello.Driver) {
-	log.Println("Reset drone position")
-	drone.Forward(0)
-	drone.Backward(0)
-	drone.Up(0)
-	drone.Down(0)
-	drone.Left(0)
-	drone.Right(0)
-	drone.Clockwise(0)
 }

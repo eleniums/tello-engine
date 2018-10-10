@@ -3,53 +3,52 @@ package engine
 import (
 	"log"
 
-	"gobot.io/x/gobot/platforms/dji/tello"
 	"gobot.io/x/gobot/platforms/keyboard"
 )
 
-// KeyHandler handles all key press events.
-func KeyHandler(drone *tello.Driver, key keyboard.KeyEvent) {
+// handleKeyPress handles a key press event.
+func (e *Engine) handleKeyPress(key keyboard.KeyEvent) {
 	log.Printf("Key pressed: %s", key.Char)
 	switch key.Key {
 	case keyboard.A:
-		drone.Right(0)
-		drone.Left(Speed)
+		e.drone.Right(0)
+		e.drone.Left(e.Speed)
 	case keyboard.D:
-		drone.Left(0)
-		drone.Right(Speed)
+		e.drone.Left(0)
+		e.drone.Right(e.Speed)
 	case keyboard.W:
-		drone.Backward(0)
-		drone.Forward(Speed)
+		e.drone.Backward(0)
+		e.drone.Forward(e.Speed)
 	case keyboard.S:
-		drone.Forward(0)
-		drone.Backward(Speed)
+		e.drone.Forward(0)
+		e.drone.Backward(e.Speed)
 	case keyboard.ArrowUp:
-		drone.Down(0)
-		drone.Up(Speed)
+		e.drone.Down(0)
+		e.drone.Up(e.Speed)
 	case keyboard.ArrowDown:
-		drone.Up(0)
-		drone.Down(Speed)
+		e.drone.Up(0)
+		e.drone.Down(e.Speed)
 	case keyboard.ArrowLeft:
-		drone.Clockwise(-RotateSpeed)
+		e.drone.Clockwise(-e.Speed)
 	case keyboard.ArrowRight:
-		drone.Clockwise(RotateSpeed)
+		e.drone.Clockwise(e.Speed)
 	case keyboard.Z:
-		drone.Land()
+		e.drone.Land()
 	case keyboard.X:
-		drone.TakeOff()
+		e.drone.TakeOff()
 	case keyboard.Q:
-		drone.LeftFlip()
+		e.drone.LeftFlip()
 	case keyboard.E:
-		drone.RightFlip()
+		e.drone.RightFlip()
 	case keyboard.R:
-		drone.BackFlip()
+		e.drone.BackFlip()
 	case keyboard.F:
-		drone.FrontFlip()
+		e.drone.FrontFlip()
 	case keyboard.B:
-		drone.Bounce()
+		e.drone.Bounce()
 	case keyboard.Escape, keyboard.Spacebar:
 		fallthrough
 	default:
-		resetDroneMovement(drone)
+		e.ResetDroneMovement()
 	}
 }
