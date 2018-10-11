@@ -58,6 +58,14 @@ func register(L *lua.LState, e *engine.Engine) {
 	}
 	L.SetGlobal("log", L.NewFunction(logging))
 
+	getLastKeyPress := func(L *lua.LState) int {
+		lastKey := e.GetLastKeyPressed()
+		ls := lua.LString(lastKey)
+		L.Push(ls)
+		return 1
+	}
+	L.SetGlobal("getlastkeypress", L.NewFunction(getLastKeyPress))
+
 	startVideo := func(L *lua.LState) int {
 		e.StartVideoStream()
 		return 0

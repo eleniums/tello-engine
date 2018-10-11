@@ -18,6 +18,8 @@ const (
 type Engine struct {
 	drone *tello.Driver
 	robot *gobot.Robot
+
+	lastKeyPressed string
 }
 
 // NewEngine will create a new instance of the engine.
@@ -30,7 +32,7 @@ func NewEngine() *Engine {
 	}
 
 	keys.On(keyboard.Key, func(data interface{}) {
-		//e.handleKeyPress(data.(keyboard.KeyEvent))
+		e.handleKeyPress(data.(keyboard.KeyEvent))
 	})
 
 	e.robot = gobot.NewRobot("tello",

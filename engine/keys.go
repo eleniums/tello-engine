@@ -4,49 +4,30 @@ import (
 	"gobot.io/x/gobot/platforms/keyboard"
 )
 
+// GetLastKeyPressed will return the last key that was pressed or an empty string if none.
+func (e *Engine) GetLastKeyPressed() string {
+	lastKey := e.lastKeyPressed
+	e.lastKeyPressed = ""
+	return lastKey
+}
+
 // handleKeyPress handles a key press event.
 func (e *Engine) handleKeyPress(key keyboard.KeyEvent) {
-	// debug("Key pressed: %s", key.Char)
-	// switch key.Key {
-	// case keyboard.A:
-	// 	e.drone.Right(0)
-	// 	e.drone.Left(e.Speed)
-	// case keyboard.D:
-	// 	e.drone.Left(0)
-	// 	e.drone.Right(e.Speed)
-	// case keyboard.W:
-	// 	e.drone.Backward(0)
-	// 	e.drone.Forward(e.Speed)
-	// case keyboard.S:
-	// 	e.drone.Forward(0)
-	// 	e.drone.Backward(e.Speed)
-	// case keyboard.ArrowUp:
-	// 	e.drone.Down(0)
-	// 	e.drone.Up(e.Speed)
-	// case keyboard.ArrowDown:
-	// 	e.drone.Up(0)
-	// 	e.drone.Down(e.Speed)
-	// case keyboard.ArrowLeft:
-	// 	e.drone.Clockwise(-e.Speed)
-	// case keyboard.ArrowRight:
-	// 	e.drone.Clockwise(e.Speed)
-	// case keyboard.Z:
-	// 	e.drone.Land()
-	// case keyboard.X:
-	// 	e.drone.TakeOff()
-	// case keyboard.Q:
-	// 	e.drone.LeftFlip()
-	// case keyboard.E:
-	// 	e.drone.RightFlip()
-	// case keyboard.R:
-	// 	e.drone.BackFlip()
-	// case keyboard.F:
-	// 	e.drone.FrontFlip()
-	// case keyboard.B:
-	// 	e.drone.Bounce()
-	// case keyboard.Escape, keyboard.Spacebar:
-	// 	fallthrough
-	// default:
-	// 	e.ResetMovement()
-	// }
+	debug("Key pressed: %s (%d)", key.Char, key.Key)
+	switch key.Key {
+	case keyboard.ArrowUp:
+		e.lastKeyPressed = "arrowup"
+	case keyboard.ArrowDown:
+		e.lastKeyPressed = "arrowdown"
+	case keyboard.ArrowLeft:
+		e.lastKeyPressed = "arrowleft"
+	case keyboard.ArrowRight:
+		e.lastKeyPressed = "arrowright"
+	case keyboard.Spacebar:
+		e.lastKeyPressed = "spacebar"
+	case keyboard.Escape:
+		e.lastKeyPressed = "escape"
+	default:
+		e.lastKeyPressed = key.Char
+	}
 }
