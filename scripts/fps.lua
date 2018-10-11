@@ -53,6 +53,8 @@ repeat
         log("initiating take off")
         takeoff()
         log("hovering")
+    elseif lastkey == "" then
+        -- do nothing
     else
         stop()
     end
