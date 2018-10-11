@@ -2,7 +2,6 @@ package engine
 
 import (
 	"log"
-	"os/exec"
 	"time"
 
 	"gobot.io/x/gobot"
@@ -55,37 +54,14 @@ func NewEngine() *Engine {
 
 // Start the drone and allow input. If autoRun is true, this function will block.
 func (e *Engine) Start(autoRun bool) {
-	e.robot.Start(autoRun)
+	err := e.robot.Start(autoRun)
+	if err != nil {
+		log.Println(err)
+	}
 }
 
 // work is the main method where actions are performed on the drone.
 func (e *Engine) work() {
-	// initialize mplayer at 60 fps (less fps causes lag in video)
-	mplayer := exec.Command("mplayer", "-fps", "60", "-")
-	mplayerIn, _ := mplayer.StdinPipe()
-	if err := mplayer.Start(); err != nil {
-		log.Println(err)
-		return
-	}
-
-	// start video streaming from drone
-	e.drone.On(tello.ConnectedEvent, func(data interface{}) {
-		log.Println("Connected event received")
-		e.drone.StartVideo()
-		e.drone.SetVideoEncoderRate(tello.VideoBitRateAuto)
-		gobot.Every(100*time.Millisecond, func() {
-			e.drone.StartVideo()
-		})
-	})
-
-	// write video frames to mplayer
-	e.drone.On(tello.VideoFrameEvent, func(data interface{}) {
-		pkt := data.([]byte)
-		if _, err := mplayerIn.Write(pkt); err != nil {
-			log.Println(err)
-		}
-	})
-
 	// get flight data events
 	var flightData *tello.FlightData
 	e.drone.On(tello.FlightDataEvent, func(data interface{}) {

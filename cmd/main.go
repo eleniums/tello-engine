@@ -33,6 +33,7 @@ func main() {
 	}
 }
 
+// register functions with lua.
 func register(L *lua.LState, e *engine.Engine) {
 	sleep := func(L *lua.LState) int {
 		milliseconds := L.ToInt(1)
@@ -47,6 +48,12 @@ func register(L *lua.LState, e *engine.Engine) {
 		return 0
 	}
 	L.SetGlobal("log", L.NewFunction(logging))
+
+	startVideo := func(L *lua.LState) int {
+		e.StartVideoStream()
+		return 0
+	}
+	L.SetGlobal("startvideo", L.NewFunction(startVideo))
 
 	takeOff := func(L *lua.LState) int {
 		e.TakeOff()
