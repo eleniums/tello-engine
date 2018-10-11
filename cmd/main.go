@@ -34,5 +34,28 @@ func main() {
 }
 
 func register(L *lua.LState, e *engine.Engine) {
-	// TODO: register all engine functions
+	sleep := func(L *lua.LState) int {
+		milliseconds := L.ToInt(1)
+		engine.Sleep(milliseconds)
+		return 0
+	}
+	L.SetGlobal("sleep", L.NewFunction(sleep))
+
+	takeOff := func(L *lua.LState) int {
+		e.TakeOff()
+		return 0
+	}
+	L.SetGlobal("takeoff", L.NewFunction(takeOff))
+
+	land := func(L *lua.LState) int {
+		e.Land()
+		return 0
+	}
+	L.SetGlobal("land", L.NewFunction(land))
+
+	resetMovement := func(L *lua.LState) int {
+		e.ResetMovement()
+		return 0
+	}
+	L.SetGlobal("resetmovement", L.NewFunction(resetMovement))
 }

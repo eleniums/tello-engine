@@ -4,6 +4,22 @@ import (
 	"log"
 )
 
+// TakeOff will start the blades and raise the drone to a normal flying height.
+func (e *Engine) TakeOff() {
+	err := e.drone.TakeOff()
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+// Land will lower the drone to the ground and stop the blades.
+func (e *Engine) Land() {
+	err := e.drone.Land()
+	if err != nil {
+		log.Println(err)
+	}
+}
+
 // ResetMovement will set all drone movement to 0.
 func (e *Engine) ResetMovement() {
 	log.Println("Reset drone position")
