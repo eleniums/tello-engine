@@ -18,6 +18,19 @@
   revision = "886a7fbe3eb1c874d46f623bfa70af45f425b3d1"
 
 [[projects]]
+  branch = "master"
+  digest = "1:101563102603d02c79d31cd1da76c66ea8f4765e401560b519ead0b6e2a4bb7f"
+  name = "github.com/yuin/gopher-lua"
+  packages = [
+    ".",
+    "ast",
+    "parse",
+    "pm",
+  ]
+  pruneopts = "UT"
+  revision = "f6fcaab0c612d877d4140cbdf6966aed51e6eebd"
+
+[[projects]]
   digest = "1:f531917a69e6f3a3a31b99313d01ebe4f58a2ad3a838a0230a82abdfcde3dc6f"
   name = "gobot.io/x/gobot"
   packages = [
@@ -33,6 +46,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/yuin/gopher-lua",
     "gobot.io/x/gobot",
     "gobot.io/x/gobot/platforms/dji/tello",
     "gobot.io/x/gobot/platforms/keyboard",
