@@ -1,0 +1,6 @@
+log("initiating take off")
+takeoff()
+sleep(5000)
+log("initiating landing")
+land()
+log("finished")
