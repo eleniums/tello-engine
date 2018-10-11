@@ -21,6 +21,66 @@ func (e *Engine) Forward(speed int) {
 	check(e.drone.Forward(speed))
 }
 
+// Backward will move the drone backward at the given speed.
+func (e *Engine) Backward(speed int) {
+	check(e.drone.Backward(speed))
+}
+
+// Left will move the drone left at the given speed.
+func (e *Engine) Left(speed int) {
+	check(e.drone.Left(speed))
+}
+
+// Right will move the drone right at the given speed.
+func (e *Engine) Right(speed int) {
+	check(e.drone.Right(speed))
+}
+
+// Up will move the drone up at the given speed.
+func (e *Engine) Up(speed int) {
+	check(e.drone.Up(speed))
+}
+
+// Down will move the drone down at the given speed.
+func (e *Engine) Down(speed int) {
+	check(e.drone.Down(speed))
+}
+
+// RotateLeft will rotate the drone left at the given speed.
+func (e *Engine) RotateLeft(speed int) {
+	check(e.drone.CounterClockwise(speed))
+}
+
+// RotateRight will rotate the drone right at the given speed.
+func (e *Engine) RotateRight(speed int) {
+	check(e.drone.Clockwise(speed))
+}
+
+// FrontFlip will cause the drone to perform a front flip.
+func (e *Engine) FrontFlip() {
+	check(e.drone.FrontFlip())
+}
+
+// BackFlip will cause the drone to perform a back flip.
+func (e *Engine) BackFlip() {
+	check(e.drone.BackFlip())
+}
+
+// LeftFlip will cause the drone to perform a left flip.
+func (e *Engine) LeftFlip() {
+	check(e.drone.LeftFlip())
+}
+
+// RightFlip will cause the drone to perform a right flip.
+func (e *Engine) RightFlip() {
+	check(e.drone.RightFlip())
+}
+
+// Bounce will toggle "bouncing" the drone up and down.
+func (e *Engine) Bounce() {
+	check(e.drone.Bounce())
+}
+
 // ResetMovement will set all drone movement to 0.
 func (e *Engine) ResetMovement() {
 	check(e.drone.Forward(0))
