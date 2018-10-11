@@ -7,13 +7,13 @@ startvideo()
 repeat
     lastkey = getlastkeypress()
 
-    if lastkey == "A" then
+    if lastkey == "a" then
         left(speed)
-    elseif lastkey == "D" then
+    elseif lastkey == "d" then
         right(speed)
-    elseif lastkey == "W" then
+    elseif lastkey == "w" then
         forward(speed)
-    elseif lastkey == "S" then
+    elseif lastkey == "s" then
         backward(speed)
     elseif lastkey == "arrowup" then
         up(speed)
@@ -23,33 +23,33 @@ repeat
         rotateleft(speed)
     elseif lastkey == "arrowright" then
         rotateright(speed)
-    elseif lastkey == "Q" then
+    elseif lastkey == "q" then
         leftflip()
-    elseif lastkey == "E" then
+    elseif lastkey == "e" then
         rightflip()
-    elseif lastkey == "R" then
+    elseif lastkey == "r" then
         backflip()
-    elseif lastkey == "F" then
+    elseif lastkey == "f" then
         frontflip()
-    elseif lastkey == "B" then
+    elseif lastkey == "b" then
         bounce()
-    elseif lastkey == "O" then
+    elseif lastkey == "o" then
         speed = speed - 5
         if speed < 0 then
             speed = 0
         end
         log("reduce speed to " .. speed)
-    elseif lastkey == "P" then
+    elseif lastkey == "p" then
         speed = speed + 5
         if speed > 100 then
             speed = 100
         end
         log("increase speed to " .. speed)
-    elseif lastkey == "Z" then
+    elseif lastkey == "z" then
         log("initiating landing")
         land()
         log("landed")
-    elseif lastkey == "X" then
+    elseif lastkey == "x" then
         log("initiating take off")
         takeoff()
         log("hovering")
