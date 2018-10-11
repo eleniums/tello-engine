@@ -4,8 +4,8 @@ import (
 	"log"
 )
 
-// ResetDroneMovement will set all drone movement to 0.
-func (e *Engine) ResetDroneMovement() {
+// ResetMovement will set all drone movement to 0.
+func (e *Engine) ResetMovement() {
 	log.Println("Reset drone position")
 	e.drone.Forward(0)
 	e.drone.Backward(0)

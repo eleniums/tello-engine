@@ -49,6 +49,6 @@ func (e *Engine) handleKeyPress(key keyboard.KeyEvent) {
 	case keyboard.Escape, keyboard.Spacebar:
 		fallthrough
 	default:
-		e.ResetDroneMovement()
+		e.ResetMovement()
 	}
 }

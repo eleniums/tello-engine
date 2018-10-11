@@ -22,7 +22,17 @@ func main() {
 	// initialize lua engine and run the script
 	L := lua.NewState()
 	defer L.Close()
-	if err := L.DoFile(script); err != nil {
+
+	// register engine functions with lua
+	register(L, e)
+
+	// execute script
+	err := L.DoFile(script)
+	if err != nil {
 		log.Fatalf("error while running lua script: %v", err)
 	}
+}
+
+func register(L *lua.LState, e *engine.Engine) {
+	// TODO: register all engine functions
 }
