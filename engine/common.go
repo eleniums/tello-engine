@@ -18,6 +18,6 @@ func Log(line string) {
 // check is a helper method to reduce clutter and log errors.
 func check(err error) {
 	if err != nil {
-		log.Println(err)
+		log.Printf("Error: %v", err)
 	}
 }

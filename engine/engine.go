@@ -16,12 +16,6 @@ const (
 
 // Engine is the main structure for controlling a drone.
 type Engine struct {
-	// Speed of the drone for left, right, up, down, forward, and backward.
-	Speed int
-
-	// RotateSpeed of the drone.
-	RotateSpeed int
-
 	drone *tello.Driver
 	robot *gobot.Robot
 }
@@ -32,13 +26,11 @@ func NewEngine() *Engine {
 	keys := keyboard.NewDriver()
 
 	e := Engine{
-		Speed:       defaultSpeed,
-		RotateSpeed: defaultRotateSpeed,
-		drone:       drone,
+		drone: drone,
 	}
 
 	keys.On(keyboard.Key, func(data interface{}) {
-		e.handleKeyPress(data.(keyboard.KeyEvent))
+		//e.handleKeyPress(data.(keyboard.KeyEvent))
 	})
 
 	e.robot = gobot.NewRobot("tello",
@@ -54,18 +46,12 @@ func NewEngine() *Engine {
 
 // Start the drone and allow input. If autoRun is true, this function will block.
 func (e *Engine) Start(autoRun bool) {
-	err := e.robot.Start(autoRun)
-	if err != nil {
-		log.Println(err)
-	}
+	check(e.robot.Start(autoRun))
 }
 
 // Stop the drone.
 func (e *Engine) Stop() {
-	err := e.robot.Stop()
-	if err != nil {
-		log.Println(err)
-	}
+	check(e.robot.Stop())
 }
 
 // work is the main method where actions are performed on the drone.

@@ -15,13 +15,13 @@ func (e *Engine) StartVideoStream() {
 	mplayer := exec.Command("mplayer", "-fps", "60", "-")
 	mplayerIn, _ := mplayer.StdinPipe()
 	if err := mplayer.Start(); err != nil {
-		log.Println(err)
+		log.Printf("Error starting video player: %v", err)
 		return
 	}
 
 	// start video streaming from drone
 	e.drone.On(tello.ConnectedEvent, func(data interface{}) {
-		log.Println("Connected event received")
+		log.Println("Connected and starting video stream")
 		e.drone.StartVideo()
 		e.drone.SetVideoEncoderRate(tello.VideoBitRateAuto)
 		gobot.Every(100*time.Millisecond, func() {
@@ -33,7 +33,7 @@ func (e *Engine) StartVideoStream() {
 	e.drone.On(tello.VideoFrameEvent, func(data interface{}) {
 		pkt := data.([]byte)
 		if _, err := mplayerIn.Write(pkt); err != nil {
-			log.Println(err)
+			log.Printf("Error writing to video: %v", err)
 		}
 	})
 }

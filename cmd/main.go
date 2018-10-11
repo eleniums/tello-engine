@@ -11,7 +11,7 @@ import (
 func main() {
 	// get script command-line argument
 	if len(os.Args) < 2 {
-		log.Fatalln("need to pass lua script as command-line argument")
+		log.Fatalln("Need to pass lua script as command-line argument")
 	}
 	script := os.Args[1]
 
@@ -31,8 +31,9 @@ func main() {
 	log.Println("----- Starting script -----")
 	err := L.DoFile(script)
 	if err != nil {
-		e.Land()
-		log.Fatalf("error while running lua script: %v", err)
+		log.Println("***** ERROR: INITIATING EMERGENCY LANDING *****")
+		e.Stop()
+		log.Fatalf("Error while running lua script: %v", err)
 	}
 	log.Println("----- Script completed -----")
 }
