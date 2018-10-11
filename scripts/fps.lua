@@ -53,7 +53,7 @@ repeat
         log("initiating take off")
         takeoff()
         log("hovering")
-    elseif lastkey == "" then
+    elseif lastkey == nil or lastkey == "" then
         -- do nothing
     else
         stop()
