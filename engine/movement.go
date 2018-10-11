@@ -59,21 +59,25 @@ func (e *Engine) RotateRight(speed int) {
 // FrontFlip will cause the drone to perform a front flip.
 func (e *Engine) FrontFlip() {
 	check(e.drone.FrontFlip())
+	time.Sleep(3000 * time.Millisecond)
 }
 
 // BackFlip will cause the drone to perform a back flip.
 func (e *Engine) BackFlip() {
 	check(e.drone.BackFlip())
+	time.Sleep(3000 * time.Millisecond)
 }
 
 // LeftFlip will cause the drone to perform a left flip.
 func (e *Engine) LeftFlip() {
 	check(e.drone.LeftFlip())
+	time.Sleep(3000 * time.Millisecond)
 }
 
 // RightFlip will cause the drone to perform a right flip.
 func (e *Engine) RightFlip() {
 	check(e.drone.RightFlip())
+	time.Sleep(3000 * time.Millisecond)
 }
 
 // Bounce will toggle "bouncing" the drone up and down.
