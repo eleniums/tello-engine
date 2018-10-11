@@ -13,7 +13,11 @@ import (
 func (e *Engine) StartVideoStream() {
 	// initialize mplayer at 60 fps (less fps causes lag in video)
 	mplayer := exec.Command("mplayer", "-fps", "60", "-")
-	mplayerIn, _ := mplayer.StdinPipe()
+	mplayerIn, err := mplayer.StdinPipe()
+	if err != nil {
+		log.Printf("Error creating pipe for video player: %v", err)
+		return
+	}
 	if err := mplayer.Start(); err != nil {
 		log.Printf("Error starting video player: %v", err)
 		return
@@ -22,10 +26,10 @@ func (e *Engine) StartVideoStream() {
 	// start video streaming from drone
 	e.drone.On(tello.ConnectedEvent, func(data interface{}) {
 		log.Println("Connected and starting video stream")
-		e.drone.StartVideo()
-		e.drone.SetVideoEncoderRate(tello.VideoBitRateAuto)
+		check(e.drone.StartVideo())
+		check(e.drone.SetVideoEncoderRate(tello.VideoBitRateAuto))
 		gobot.Every(100*time.Millisecond, func() {
-			e.drone.StartVideo()
+			check(e.drone.StartVideo())
 		})
 	})
 
