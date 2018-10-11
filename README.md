@@ -14,7 +14,7 @@ brew install mplayer
 ## Run
 First, connect to the Tello drone via Wi-Fi. It will be named something similar to "TELLO-XXXXXX". Then run the program:
 ```
-go run ./cmd/main.go
+go run ./cmd/main.go ./scripts/basic.lua
 ```
 
 ## Technologies
