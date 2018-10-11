@@ -79,7 +79,7 @@ func (e *Engine) work() {
 	// handle flight data events on a timed interval
 	gobot.Every(5*time.Second, func() {
 		if flightData != nil {
-			log.Printf("Battery percentage: %v%%, Height: %v\n", flightData.BatteryPercentage, flightData.Height)
+			log.Printf("Battery percentage: %v%%\n", flightData.BatteryPercentage)
 			if flightData.BatteryLow || flightData.BatteryLower {
 				log.Println("***** WARNING: BATTERY LOW! *****")
 			}
