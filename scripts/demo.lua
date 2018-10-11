@@ -1,4 +1,5 @@
 log("initiating take off")
 takeoff()
+frontflip()
 log("initiating landing")
 land()

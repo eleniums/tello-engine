@@ -28,10 +28,12 @@ func main() {
 	register(L, e)
 
 	// execute script
+	log.Println("----- Starting script -----")
 	err := L.DoFile(script)
 	if err != nil {
 		log.Fatalf("error while running lua script: %v", err)
 	}
+	log.Println("----- Script completed -----")
 }
 
 // register functions with lua.
