@@ -31,6 +31,7 @@ func main() {
 	log.Println("----- Starting script -----")
 	err := L.DoFile(script)
 	if err != nil {
+		e.Land()
 		log.Fatalf("error while running lua script: %v", err)
 	}
 	log.Println("----- Script completed -----")
