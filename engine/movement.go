@@ -2,6 +2,7 @@ package engine
 
 import (
 	"log"
+	"time"
 )
 
 // TakeOff will start the blades and raise the drone to a normal flying height.
@@ -10,6 +11,7 @@ func (e *Engine) TakeOff() {
 	if err != nil {
 		log.Println(err)
 	}
+	time.Sleep(5000 * time.Millisecond)
 }
 
 // Land will lower the drone to the ground and stop the blades.
@@ -18,6 +20,7 @@ func (e *Engine) Land() {
 	if err != nil {
 		log.Println(err)
 	}
+	time.Sleep(5000 * time.Millisecond)
 }
 
 // ResetMovement will set all drone movement to 0.
