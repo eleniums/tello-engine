@@ -68,9 +68,9 @@ func register(L *lua.LState, e *engine.Engine) {
 	}
 	L.SetGlobal("land", L.NewFunction(land))
 
-	resetMovement := func(L *lua.LState) int {
+	stop := func(L *lua.LState) int {
 		e.ResetMovement()
 		return 0
 	}
-	L.SetGlobal("resetmovement", L.NewFunction(resetMovement))
+	L.SetGlobal("stop", L.NewFunction(stop))
 }
