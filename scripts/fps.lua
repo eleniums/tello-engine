@@ -7,58 +7,55 @@ startvideo()
 repeat
     lastkey = getlastkeypress()
 
-    if(lastkey == "A")
-    then
+    if lastkey == "A" then
         left(speed)
-    else if(lastkey == "D")
+    elseif lastkey == "D" then
         right(speed)
-    else if(lastkey == "W")
+    elseif lastkey == "W" then
         forward(speed)
-    else if(lastkey == "S")
+    elseif lastkey == "S" then
         backward(speed)
-    else if(lastkey == "arrowup")
+    elseif lastkey == "arrowup" then
         up(speed)
-    else if(lastkey == "arrowdown")
+    elseif lastkey == "arrowdown" then
         down(speed)
-    else if(lastkey == "arrowleft")
+    elseif lastkey == "arrowleft" then
         rotateleft(speed)
-    else if(lastkey == "arrowright")
+    elseif lastkey == "arrowright" then
         rotateright(speed)
-    else if(lastkey == "Q")
+    elseif lastkey == "Q" then
         leftflip()
-    else if(lastkey == "E")
+    elseif lastkey == "E" then
         rightflip()
-    else if(lastkey == "R")
+    elseif lastkey == "R" then
         backflip()
-    else if(lastkey == "F")
+    elseif lastkey == "F" then
         frontflip()
-    else if(lastkey == "B")
+    elseif lastkey == "B" then
         bounce()
-    else if(lastkey == "O")
+    elseif lastkey == "O" then
         speed = speed - 5
-        if(speed < 0)
-        then
+        if speed < 0 then
             speed = 0
         end
-        log("decrease speed to " .. speed)
-    else if(lastkey == "P")
+        log("reduce speed to " .. speed)
+    elseif lastkey == "P" then
         speed = speed + 5
-        if(speed > 100)
-        then
+        if speed > 100 then
             speed = 100
         end
         log("increase speed to " .. speed)
-    else if(lastkey == "Z")
+    elseif lastkey == "Z" then
         log("initiating landing")
         land()
         log("landed")
-    else if(lastkey == "X")
+    elseif lastkey == "X" then
         log("initiating take off")
         takeoff()
         log("hovering")
     else
         stop()
     end
-until(lastkey == "escape")
+until lastkey == "escape"
 
 log("execution terminated")
