@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"os"
 
@@ -9,18 +10,21 @@ import (
 )
 
 func main() {
+	flag.BoolVar(&engine.Debug, "debug", false, "true to enable debug logging")
+	flag.Parse()
+
 	// get script command-line argument
-	if len(os.Args) < 2 {
+	script := os.Args[len(os.Args)-1]
+	if _, err := os.Stat(script); len(os.Args) < 2 || os.IsNotExist(err) {
 		log.Fatalln("Need to pass lua script as command-line argument")
 	}
-	script := os.Args[1]
 
 	// prepare to handle input and start the drone
 	e := engine.NewEngine()
 	e.Start(false)
 	defer e.Stop()
 
-	// initialize lua engine and run the script
+	// initialize lua engine
 	L := lua.NewState()
 	defer L.Close()
 
