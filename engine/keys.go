@@ -6,7 +6,7 @@ import (
 
 // handleKeyPress handles a key press event.
 func (e *Engine) handleKeyPress(key keyboard.KeyEvent) {
-	// log.Printf("Key pressed: %s", key.Char)
+	// debug("Key pressed: %s", key.Char)
 	// switch key.Key {
 	// case keyboard.A:
 	// 	e.drone.Right(0)
