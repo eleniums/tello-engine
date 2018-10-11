@@ -18,6 +18,7 @@ func main() {
 	// prepare to handle input and start the drone
 	e := engine.NewEngine()
 	e.Start(false)
+	defer e.Stop()
 
 	// initialize lua engine and run the script
 	L := lua.NewState()

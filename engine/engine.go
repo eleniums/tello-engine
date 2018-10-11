@@ -60,6 +60,14 @@ func (e *Engine) Start(autoRun bool) {
 	}
 }
 
+// Stop the drone.
+func (e *Engine) Stop() {
+	err := e.robot.Stop()
+	if err != nil {
+		log.Println(err)
+	}
+}
+
 // work is the main method where actions are performed on the drone.
 func (e *Engine) work() {
 	// get flight data events
