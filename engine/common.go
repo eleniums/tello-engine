@@ -10,6 +10,7 @@ var Debug = false
 
 // Sleep for the given number of milliseconds.
 func Sleep(milliseconds int) {
+	debug("Sleep for %vms", milliseconds)
 	time.Sleep(time.Duration(milliseconds) * time.Millisecond)
 }
 
