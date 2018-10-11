@@ -28,6 +28,6 @@ func (e *Engine) handleKeyPress(key keyboard.KeyEvent) {
 	case keyboard.Escape:
 		e.lastKeyPressed = "escape"
 	default:
-		e.lastKeyPressed = key.Char
+		e.lastKeyPressed = string(key.Key)
 	}
 }
