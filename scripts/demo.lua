@@ -1,3 +1,6 @@
+speed = 20
+log("set speed to " .. speed)
+
 log("initiating take off")
 takeoff()
 log("hovering")
