@@ -1,4 +1,4 @@
-speed = 20
+speed = 50
 log("set initial speed to " .. speed)
 
 log("start video stream")
