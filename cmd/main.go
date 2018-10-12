@@ -52,8 +52,8 @@ func register(L *lua.LState, e *engine.Engine) {
 	L.SetGlobal("sleep", L.NewFunction(sleep))
 
 	logging := func(L *lua.LState) int {
-		line := L.ToString(1)
-		engine.Log(line)
+		message := L.ToString(1)
+		engine.Log(message)
 		return 0
 	}
 	L.SetGlobal("log", L.NewFunction(logging))

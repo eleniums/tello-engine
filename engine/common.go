@@ -14,9 +14,9 @@ func Sleep(milliseconds int) {
 	time.Sleep(time.Duration(milliseconds) * time.Millisecond)
 }
 
-// Log a message
-func Log(line string) {
-	log.Printf("(lua) %s", line)
+// Log a message.
+func Log(message string) {
+	log.Printf("(lua) %s", message)
 }
 
 // debug will write a debug log.
