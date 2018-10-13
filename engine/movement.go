@@ -14,6 +14,7 @@ func (e *Engine) TakeOff() {
 // Land will lower the drone to the ground and stop the blades.
 func (e *Engine) Land() {
 	debug("Land")
+	e.ResetMovement()
 	check(e.drone.Land())
 	time.Sleep(5000 * time.Millisecond)
 }
