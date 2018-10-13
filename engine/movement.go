@@ -7,6 +7,7 @@ import (
 // TakeOff will start the blades and raise the drone to a normal flying height.
 func (e *Engine) TakeOff() {
 	debug("Take off")
+	e.ResetMovement()
 	check(e.drone.TakeOff())
 	time.Sleep(5000 * time.Millisecond)
 }
