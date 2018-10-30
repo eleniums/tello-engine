@@ -1,3 +1,5 @@
+-- Simple demo script with some flips and turns
+
 log("initiating take off")
 takeoff()
 log("hovering")

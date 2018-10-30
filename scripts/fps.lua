@@ -1,3 +1,18 @@
+-- Fly around using typical first person shooter controls on the keyboard
+-- WASD: forward, backward, left, and right
+-- Arrow keys: rotate left, rotate right, up, and down
+-- Escape: exit script
+-- Spacebar: reset movement in all directions (this is an important one to remember)
+-- X: take off
+-- Z: land
+-- O: reduce speed
+-- P: increase speed
+-- Q: left flip
+-- E: right flip
+-- F: front flip
+-- R: back flip
+-- B: bounce up and down near the ground
+
 speed = 50
 log("set initial speed to " .. speed)
 
