@@ -31,9 +31,9 @@ repeat
     elseif lastkey == "s" then
         down(speed)
     elseif lastkey == "arrowup" then
-        up(speed)
+        forward(speed)
     elseif lastkey == "arrowdown" then
-        down(speed)
+        backward(speed)
     elseif lastkey == "arrowleft" then
         left(speed)
     elseif lastkey == "arrowright" then
