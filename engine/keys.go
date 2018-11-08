@@ -13,21 +13,26 @@ func (e *Engine) GetLastKeyPressed() string {
 
 // handleKeyPress handles a key press event.
 func (e *Engine) handleKeyPress(key keyboard.KeyEvent) {
-	debug("Key pressed: %s (%d)", key.Char, key.Key)
+	// convert some common key presses into human readable strings
+	var lastKeyPressed string
 	switch key.Key {
 	case keyboard.ArrowUp:
-		e.lastKeyPressed = "arrowup"
+		lastKeyPressed = "arrowup"
 	case keyboard.ArrowDown:
-		e.lastKeyPressed = "arrowdown"
+		lastKeyPressed = "arrowdown"
 	case keyboard.ArrowLeft:
-		e.lastKeyPressed = "arrowleft"
+		lastKeyPressed = "arrowleft"
 	case keyboard.ArrowRight:
-		e.lastKeyPressed = "arrowright"
+		lastKeyPressed = "arrowright"
 	case keyboard.Spacebar:
-		e.lastKeyPressed = "spacebar"
+		lastKeyPressed = "spacebar"
 	case keyboard.Escape:
-		e.lastKeyPressed = "escape"
+		lastKeyPressed = "escape"
 	default:
-		e.lastKeyPressed = string(key.Key)
+		lastKeyPressed = string(key.Key)
 	}
+
+	e.lastKeyPressed = lastKeyPressed
+
+	debug("Key pressed: %s (%d)", lastKeyPressed, key.Key)
 }
