@@ -2,6 +2,22 @@
 
 
 [[projects]]
+  digest = "1:4b6a43ba3296f26ea01ae125e50951f141c215dd18b5b91e9f397117b2951eb1"
+  name = "github.com/gobuffalo/uuid"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "3f701655805f1ef76e9963d1b377497a0c66d7cd"
+  version = "v2.0.5"
+
+[[projects]]
+  digest = "1:c594a691090b434d55c67f6cc8e326ef5ba49452abc059821bd5d4fd4cdef08c"
+  name = "github.com/gofrs/uuid"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "7077aa61129615a0d7f45c49101cd011ab221c27"
+  version = "v3.1.2"
+
+[[projects]]
   digest = "1:0ade334594e69404d80d9d323445d2297ff8161637f9b2d347cc6973d2d6f05b"
   name = "github.com/hashicorp/errwrap"
   packages = ["."]
@@ -19,7 +35,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:101563102603d02c79d31cd1da76c66ea8f4765e401560b519ead0b6e2a4bb7f"
+  digest = "1:7d2aad811396da92f23df2890ed55cd8b5ccd2ecfd77ea34fc9e9f9c3a207d22"
   name = "github.com/yuin/gopher-lua"
   packages = [
     ".",
@@ -28,10 +44,11 @@
     "pm",
   ]
   pruneopts = "UT"
-  revision = "f6fcaab0c612d877d4140cbdf6966aed51e6eebd"
+  revision = "1e6e6e1918e02ddf02e667e88e8aa756942448c5"
 
 [[projects]]
-  digest = "1:f531917a69e6f3a3a31b99313d01ebe4f58a2ad3a838a0230a82abdfcde3dc6f"
+  branch = "dev"
+  digest = "1:8b29a0248a9049a743c1b928fc09b20e1f9be1fef1f5262370d375a76fc5c585"
   name = "gobot.io/x/gobot"
   packages = [
     ".",
@@ -39,8 +56,7 @@
     "platforms/keyboard",
   ]
   pruneopts = "UT"
-  revision = "ed531980b4efe72c4fd9e768171855de3af2d718"
-  version = "v1.12.0"
+  revision = "ad31c39a7c1cabdd38a90b7ffbb2d15bbf3923e0"
 
 [solve-meta]
   analyzer-name = "dep"
