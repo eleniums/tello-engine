@@ -57,27 +57,27 @@ func processKeys(e *engine.Engine, *pixelgl.Window) {
 	}
 	
 	if win.Pressed(pixelgl.KeyLeft) {
-		e.Left()
+		e.Left(speed)
 	} else if win.Pressed(pixelgl.KeyRight) {
-		e.Right()
+		e.Right(speed)
 	}
 
 	if win.Pressed(pixelgl.KeyUp) {
-		e.Forward()
+		e.Forward(speed)
 	} else if win.Pressed(pixelgl.KeyDown) {
-		e.Backward()
+		e.Backward(speed)
 	} 
 
 	if win.Pressed(pixelgl.KeyA) {
-		e.RotateLeft()
+		e.RotateLeft(speed)
 	} else if win.Pressed(pixelgl.KeyD) {
-		e.RotateRight()
+		e.RotateRight(speed)
 	}
 
 	if win.Pressed(pixelgl.KeyW) {
-		e.Up()
+		e.Up(speed)
 	} else if win.Pressed(pixelgl.KeyS) {
-		e.Down()
+		e.Down(speed)
 	}
 
 	if win.Pressed(pixelgl.KeyQ) {
