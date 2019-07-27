@@ -31,6 +31,8 @@ go run ./cmd/go/main.go
     - https://github.com/hybridgroup/gobot
 - MPlayer:
     - http://www.mplayerhq.hu
+- Pixel for keyboard input:
+    - https://github.com/faiface/pixel
 
 ## Available lua commands
 - `sleep(milliseconds)`: Sleep for the given number of milliseconds.
