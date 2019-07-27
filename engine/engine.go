@@ -6,7 +6,6 @@ import (
 
 	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/platforms/dji/tello"
-	"gobot.io/x/gobot/platforms/keyboard"
 )
 
 const (
@@ -25,19 +24,14 @@ type Engine struct {
 // NewEngine will create a new instance of the engine.
 func NewEngine() *Engine {
 	drone := tello.NewDriver("8888")
-	keys := keyboard.NewDriver()
 
 	e := Engine{
 		drone: drone,
 	}
 
-	keys.On(keyboard.Key, func(data interface{}) {
-		e.handleKeyPress(data.(keyboard.KeyEvent))
-	})
-
 	e.robot = gobot.NewRobot("tello",
 		[]gobot.Connection{},
-		[]gobot.Device{keys, drone},
+		[]gobot.Device{drone},
 		func() {
 			e.work()
 		},
