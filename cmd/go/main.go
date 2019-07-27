@@ -27,15 +27,22 @@ func main() {
 	e.Start(false)
 	defer e.Stop()
 
-	// open window for receiving keyboard input
-	win, err := run()
-	if err != nil {
-		panic(err)
-	}
+	pixelgl.Run(func() {
+		// open window for receiving keyboard input
+		win, err := run()
+		if err != nil {
+			panic(err)
+		}
 
-	for !win.Closed() {
-		processKeys(e, win)
-	}
+		// main loop to handle keyboard input
+		for !win.Closed() {
+			win.UpdateInput()
+			processKeys(e, win)
+			if win.Pressed(pixelgl.KeyEscape) {
+				break
+			}
+		}
+	})
 }
 
 func run() (*pixelgl.Window, error) {
@@ -77,24 +84,32 @@ func processKeys(e *engine.Engine, win *pixelgl.Window) {
 		e.Left(speed)
 	} else if win.Pressed(pixelgl.KeyRight) {
 		e.Right(speed)
+	} else {
+		e.Left(0)
 	}
 
 	if win.Pressed(pixelgl.KeyUp) {
 		e.Forward(speed)
 	} else if win.Pressed(pixelgl.KeyDown) {
 		e.Backward(speed)
+	} else {
+		e.Forward(0)
 	}
 
 	if win.Pressed(pixelgl.KeyA) {
 		e.RotateLeft(speed)
 	} else if win.Pressed(pixelgl.KeyD) {
 		e.RotateRight(speed)
+	} else {
+		e.RotateLeft(0)
 	}
 
 	if win.Pressed(pixelgl.KeyW) {
 		e.Up(speed)
 	} else if win.Pressed(pixelgl.KeyS) {
 		e.Down(speed)
+	} else {
+		e.Up(0)
 	}
 
 	if win.Pressed(pixelgl.KeyQ) {
