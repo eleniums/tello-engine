@@ -62,9 +62,9 @@ func run() (*pixelgl.Window, error) {
 }
 
 func processKeys(e *engine.Engine, win *pixelgl.Window) {
-	if win.Pressed(pixelgl.KeyX) {
+	if win.JustPressed(pixelgl.KeyX) {
 		e.TakeOff()
-	} else if win.Pressed(pixelgl.KeyZ) {
+	} else if win.JustPressed(pixelgl.KeyZ) {
 		e.Land()
 	}
 
@@ -80,53 +80,61 @@ func processKeys(e *engine.Engine, win *pixelgl.Window) {
 		}
 	}
 
-	if win.Pressed(pixelgl.KeyLeft) {
+	if win.JustPressed(pixelgl.KeyLeft) {
 		e.Left(speed)
-	} else if win.Pressed(pixelgl.KeyRight) {
+	} else if win.JustPressed(pixelgl.KeyRight) {
 		e.Right(speed)
+	} else if win.Pressed(pixelgl.KeyLeft) || win.Pressed(pixelgl.KeyRight) {
+		// do nothing
 	} else {
 		e.Left(0)
 	}
 
-	if win.Pressed(pixelgl.KeyUp) {
+	if win.JustPressed(pixelgl.KeyUp) {
 		e.Forward(speed)
-	} else if win.Pressed(pixelgl.KeyDown) {
+	} else if win.JustPressed(pixelgl.KeyDown) {
 		e.Backward(speed)
+	} else if win.Pressed(pixelgl.KeyUp) || win.Pressed(pixelgl.KeyDown) {
+		// do nothing
 	} else {
 		e.Forward(0)
 	}
 
-	if win.Pressed(pixelgl.KeyA) {
+	if win.JustPressed(pixelgl.KeyA) {
 		e.RotateLeft(speed)
-	} else if win.Pressed(pixelgl.KeyD) {
+	} else if win.JustPressed(pixelgl.KeyD) {
 		e.RotateRight(speed)
+	} else if win.Pressed(pixelgl.KeyA) || win.Pressed(pixelgl.KeyD) {
+		// do nothing
 	} else {
 		e.RotateLeft(0)
 	}
 
-	if win.Pressed(pixelgl.KeyW) {
+	if win.JustPressed(pixelgl.KeyW) {
 		e.Up(speed)
-	} else if win.Pressed(pixelgl.KeyS) {
+	} else if win.JustPressed(pixelgl.KeyS) {
 		e.Down(speed)
+	} else if win.Pressed(pixelgl.KeyW) || win.Pressed(pixelgl.KeyS) {
+		// do nothing
 	} else {
 		e.Up(0)
 	}
 
-	if win.Pressed(pixelgl.KeyQ) {
+	if win.JustPressed(pixelgl.KeyQ) {
 		e.LeftFlip()
-	} else if win.Pressed(pixelgl.KeyE) {
+	} else if win.JustPressed(pixelgl.KeyE) {
 		e.RightFlip()
-	} else if win.Pressed(pixelgl.KeyF) {
+	} else if win.JustPressed(pixelgl.KeyF) {
 		e.FrontFlip()
-	} else if win.Pressed(pixelgl.KeyR) {
+	} else if win.JustPressed(pixelgl.KeyR) {
 		e.BackFlip()
 	}
 
-	if win.Pressed(pixelgl.KeyB) {
+	if win.JustPressed(pixelgl.KeyB) {
 		e.Bounce()
 	}
 
-	if win.Pressed(pixelgl.KeySpace) {
+	if win.JustPressed(pixelgl.KeySpace) {
 		e.ResetMovement()
 	}
 }
