@@ -2,6 +2,57 @@
 
 
 [[projects]]
+  branch = "master"
+  digest = "1:3a0a1adab2c5abbd6320d69da87a3d18687a895672206bb20e066c3a775c718f"
+  name = "github.com/faiface/glhf"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "82a6317ac380cdc61567d729fe48833d75b8108e"
+
+[[projects]]
+  branch = "master"
+  digest = "1:f43ae18fea96ddd49340e65001d1b556e2dba024228a93ee9eec25fe3fe52939"
+  name = "github.com/faiface/mainthread"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "8b78f0a41ae388189090ac4506612659fa53082b"
+
+[[projects]]
+  digest = "1:c94bf1329aa4252d99606eab2517ae79b8bd1a416a69c99955a91590932f84ea"
+  name = "github.com/faiface/pixel"
+  packages = [
+    ".",
+    "pixelgl",
+  ]
+  pruneopts = "UT"
+  revision = "0c2d627cfa32f437abe22d6a6ee1de7d102c0264"
+  version = "v0.8.0"
+
+[[projects]]
+  branch = "master"
+  digest = "1:df295073671e8625ac8f3694fc0229c730fe644797ced161ed35da3848f31a9a"
+  name = "github.com/go-gl/gl"
+  packages = ["v3.3-core/gl"]
+  pruneopts = "UT"
+  revision = "bf2b1f2f34d7f6a60a99a830f65dcd6afb0c6587"
+
+[[projects]]
+  branch = "master"
+  digest = "1:4a56a109a6185707d4d820f5188404f9cc1bdecb7b4a905d4edfd91d4137ebdc"
+  name = "github.com/go-gl/glfw"
+  packages = ["v3.2/glfw"]
+  pruneopts = "UT"
+  revision = "e6da0acd62b1b57ee2799d4d0a76a7d4514dc5bc"
+
+[[projects]]
+  branch = "master"
+  digest = "1:20093807cff9bf93486b6d9ebf3a658ce61092d25be1202495bd82db26a15ed0"
+  name = "github.com/go-gl/mathgl"
+  packages = ["mgl32"]
+  pruneopts = "UT"
+  revision = "592312d8590acb0686c14740dcf60e2f32d9c618"
+
+[[projects]]
   digest = "1:4b6a43ba3296f26ea01ae125e50951f141c215dd18b5b91e9f397117b2951eb1"
   name = "github.com/gobuffalo/uuid"
   packages = ["."]
@@ -10,12 +61,12 @@
   version = "v2.0.5"
 
 [[projects]]
-  digest = "1:c594a691090b434d55c67f6cc8e326ef5ba49452abc059821bd5d4fd4cdef08c"
+  digest = "1:bed9d72d596f94e65fff37f4d6c01398074a6bb1c3f3ceff963516bd01db6ff5"
   name = "github.com/gofrs/uuid"
   packages = ["."]
   pruneopts = "UT"
-  revision = "7077aa61129615a0d7f45c49101cd011ab221c27"
-  version = "v3.1.2"
+  revision = "6b08a5c5172ba18946672b49749cde22873dd7c2"
+  version = "v3.2.0"
 
 [[projects]]
   digest = "1:0ade334594e69404d80d9d323445d2297ff8161637f9b2d347cc6973d2d6f05b"
@@ -27,15 +78,23 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:f668349b83f7d779567c880550534addeca7ebadfdcf44b0b9c39be61864b4b7"
+  digest = "1:2c83286b05339b874cf821a3cd5b20c5415c904e6804baa47479f1a28956730e"
   name = "github.com/hashicorp/go-multierror"
   packages = ["."]
   pruneopts = "UT"
-  revision = "886a7fbe3eb1c874d46f623bfa70af45f425b3d1"
+  revision = "bdca7bb83f603b80ef756bb953fe1dafa9cd00a2"
+
+[[projects]]
+  digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "ba968bfe8b2f7e042a574c888954fccecfa385b4"
+  version = "v0.8.1"
 
 [[projects]]
   branch = "master"
-  digest = "1:7d2aad811396da92f23df2890ed55cd8b5ccd2ecfd77ea34fc9e9f9c3a207d22"
+  digest = "1:f680304b19a1f055b5df0ef87918d7f0920ef117c194ea25a8189e13ccb6ad52"
   name = "github.com/yuin/gopher-lua"
   packages = [
     ".",
@@ -44,11 +103,11 @@
     "pm",
   ]
   pruneopts = "UT"
-  revision = "1e6e6e1918e02ddf02e667e88e8aa756942448c5"
+  revision = "1cd887cd7036fd4be7a0cb180dd508cb8e2e689a"
 
 [[projects]]
   branch = "dev"
-  digest = "1:8b29a0248a9049a743c1b928fc09b20e1f9be1fef1f5262370d375a76fc5c585"
+  digest = "1:573ac77bbde531153f0bbed0bdec33cff372045b87b7e77292da74be02a93ab0"
   name = "gobot.io/x/gobot"
   packages = [
     ".",
@@ -56,12 +115,22 @@
     "platforms/keyboard",
   ]
   pruneopts = "UT"
-  revision = "ad31c39a7c1cabdd38a90b7ffbb2d15bbf3923e0"
+  revision = "c7d6ea7569c3341b95fb8e21dde9aad8b659af85"
+
+[[projects]]
+  branch = "master"
+  digest = "1:95198eb6f7a9fd8970f3bd24f130da14b68ba1dc3738f191f39f4a822d21e6d8"
+  name = "golang.org/x/image"
+  packages = ["math/f32"]
+  pruneopts = "UT"
+  revision = "d6a02ce849c95fa57d9927fab7b6d9071876dfe0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/faiface/pixel",
+    "github.com/faiface/pixel/pixelgl",
     "github.com/yuin/gopher-lua",
     "gobot.io/x/gobot",
     "gobot.io/x/gobot/platforms/dji/tello",
