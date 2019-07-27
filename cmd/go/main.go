@@ -16,6 +16,11 @@ const (
 
 var (
 	speed = 50
+
+	moveXAxis  = false
+	moveYAxis  = false
+	moveZAxis  = false
+	moveRotate = false
 )
 
 func main() {
@@ -81,42 +86,46 @@ func processKeys(e *engine.Engine, win *pixelgl.Window) {
 	}
 
 	if win.JustPressed(pixelgl.KeyLeft) {
+		moveXAxis = true
 		e.Left(speed)
 	} else if win.JustPressed(pixelgl.KeyRight) {
+		moveXAxis = true
 		e.Right(speed)
-	} else if win.Pressed(pixelgl.KeyLeft) || win.Pressed(pixelgl.KeyRight) {
-		// do nothing
-	} else {
+	} else if moveXAxis && !win.Pressed(pixelgl.KeyLeft) && !win.Pressed(pixelgl.KeyRight) {
+		moveXAxis = false
 		e.Left(0)
 	}
 
 	if win.JustPressed(pixelgl.KeyUp) {
+		moveYAxis = true
 		e.Forward(speed)
 	} else if win.JustPressed(pixelgl.KeyDown) {
+		moveYAxis = true
 		e.Backward(speed)
-	} else if win.Pressed(pixelgl.KeyUp) || win.Pressed(pixelgl.KeyDown) {
-		// do nothing
-	} else {
+	} else if moveYAxis && !win.Pressed(pixelgl.KeyUp) && !win.Pressed(pixelgl.KeyDown) {
+		moveYAxis = false
 		e.Forward(0)
 	}
 
 	if win.JustPressed(pixelgl.KeyA) {
+		moveRotate = true
 		e.RotateLeft(speed)
 	} else if win.JustPressed(pixelgl.KeyD) {
+		moveRotate = true
 		e.RotateRight(speed)
-	} else if win.Pressed(pixelgl.KeyA) || win.Pressed(pixelgl.KeyD) {
-		// do nothing
-	} else {
+	} else if moveRotate && !win.Pressed(pixelgl.KeyA) && !win.Pressed(pixelgl.KeyD) {
+		moveRotate = false
 		e.RotateLeft(0)
 	}
 
 	if win.JustPressed(pixelgl.KeyW) {
+		moveZAxis = true
 		e.Up(speed)
 	} else if win.JustPressed(pixelgl.KeyS) {
+		moveZAxis = true
 		e.Down(speed)
-	} else if win.Pressed(pixelgl.KeyW) || win.Pressed(pixelgl.KeyS) {
-		// do nothing
-	} else {
+	} else if moveZAxis && !win.Pressed(pixelgl.KeyW) && !win.Pressed(pixelgl.KeyS) {
+		moveZAxis = false
 		e.Up(0)
 	}
 
