@@ -10,13 +10,15 @@ import (
 )
 
 const (
-	minSpeed = 0
-	maxSpeed = 100
+	minSpeed           = 0
+	maxSpeed           = 100
+	defaultMoveSpeed   = 50
+	defaultRotateSpeed = 80
 )
 
 var (
-	moveSpeed   = 50
-	rotateSpeed = 80
+	moveSpeed   = defaultMoveSpeed
+	rotateSpeed = defaultRotateSpeed
 
 	moveXAxis  = false
 	moveYAxis  = false
@@ -159,6 +161,8 @@ func processKeys(e *engine.Engine, win *pixelgl.Window) {
 	}
 
 	if win.JustPressed(pixelgl.KeySpace) {
+		moveSpeed = defaultMoveSpeed
+		rotateSpeed = defaultRotateSpeed
 		e.ResetMovement()
 	}
 }
