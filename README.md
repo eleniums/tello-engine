@@ -17,7 +17,7 @@ First, connect to the Tello drone via Wi-Fi. It will be named something similar 
 go run ./cmd/lua/main.go ./scripts/basic.lua
 ```
 
-For a non-scripted experience, run:
+For a pure Go, non-scripted experience, run:
 ```
 go run ./cmd/go/main.go
 ```
