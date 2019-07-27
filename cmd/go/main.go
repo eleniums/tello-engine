@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 
 	"github.com/eleniums/tello-engine/engine"
 	"github.com/faiface/pixel"
@@ -22,14 +23,17 @@ func main() {
 	defer e.Stop()
 
 	// open window for receiving keyboard input
-	win := run()
+	win, err := run()
+	if err != nil {
+		panic(err)
+	}
 
 	for !win.Closed() {
 		processKeys(e, win)
 	}
 }
 
-func run() *pixelgl.Window {
+func run() (*pixelgl.Window, error) {
 	cfg := pixelgl.WindowConfig{
 		Title:  "tello-go",
 		Bounds: pixel.R(0, 0, 1024, 768),
@@ -37,12 +41,12 @@ func run() *pixelgl.Window {
 	}
 	win, err := pixelgl.NewWindow(cfg)
 	if err != nil {
-		panic(err)
+		return nil, fmt.Errorf("Error creating window: %v", err)
 	}
 
 	win.SetSmooth(true)
 
-	return win
+	return win, nil
 }
 
 func processKeys(e *engine.Engine, win *pixelgl.Window) {
