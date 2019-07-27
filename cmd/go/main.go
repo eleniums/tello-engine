@@ -9,6 +9,11 @@ import (
 	"github.com/faiface/pixel/pixelgl"
 )
 
+const (
+	minSpeed = 0
+	maxSpeed = 100
+)
+
 var (
 	speed = 50
 )
@@ -58,8 +63,14 @@ func processKeys(e *engine.Engine, win *pixelgl.Window) {
 
 	if win.JustPressed(pixelgl.KeyO) {
 		speed -= 10
+		if speed < minSpeed {
+			speed = minSpeed
+		}
 	} else if win.JustPressed(pixelgl.KeyP) {
 		speed += 10
+		if speed > maxSpeed {
+			speed = maxSpeed
+		}
 	}
 
 	if win.Pressed(pixelgl.KeyLeft) {
