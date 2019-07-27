@@ -15,7 +15,8 @@ const (
 )
 
 var (
-	speed = 50
+	moveSpeed   = 50
+	rotateSpeed = 80
 
 	moveXAxis  = false
 	moveYAxis  = false
@@ -31,6 +32,8 @@ func main() {
 	e := engine.NewEngine()
 	e.Start(false)
 	defer e.Stop()
+
+	e.StartVideoStream()
 
 	pixelgl.Run(func() {
 		// open window for receiving keyboard input
@@ -74,23 +77,35 @@ func processKeys(e *engine.Engine, win *pixelgl.Window) {
 	}
 
 	if win.JustPressed(pixelgl.KeyO) {
-		speed -= 10
-		if speed < minSpeed {
-			speed = minSpeed
+		moveSpeed -= 10
+		if moveSpeed < minSpeed {
+			moveSpeed = minSpeed
 		}
 	} else if win.JustPressed(pixelgl.KeyP) {
-		speed += 10
-		if speed > maxSpeed {
-			speed = maxSpeed
+		moveSpeed += 10
+		if moveSpeed > maxSpeed {
+			moveSpeed = maxSpeed
+		}
+	}
+
+	if win.JustPressed(pixelgl.KeyU) {
+		rotateSpeed -= 10
+		if rotateSpeed < minSpeed {
+			rotateSpeed = minSpeed
+		}
+	} else if win.JustPressed(pixelgl.KeyI) {
+		rotateSpeed += 10
+		if rotateSpeed > maxSpeed {
+			rotateSpeed = maxSpeed
 		}
 	}
 
 	if win.JustPressed(pixelgl.KeyLeft) {
 		moveXAxis = true
-		e.Left(speed)
+		e.Left(moveSpeed)
 	} else if win.JustPressed(pixelgl.KeyRight) {
 		moveXAxis = true
-		e.Right(speed)
+		e.Right(moveSpeed)
 	} else if moveXAxis && !win.Pressed(pixelgl.KeyLeft) && !win.Pressed(pixelgl.KeyRight) {
 		moveXAxis = false
 		e.Left(0)
@@ -98,10 +113,10 @@ func processKeys(e *engine.Engine, win *pixelgl.Window) {
 
 	if win.JustPressed(pixelgl.KeyUp) {
 		moveYAxis = true
-		e.Forward(speed)
+		e.Forward(moveSpeed)
 	} else if win.JustPressed(pixelgl.KeyDown) {
 		moveYAxis = true
-		e.Backward(speed)
+		e.Backward(moveSpeed)
 	} else if moveYAxis && !win.Pressed(pixelgl.KeyUp) && !win.Pressed(pixelgl.KeyDown) {
 		moveYAxis = false
 		e.Forward(0)
@@ -109,10 +124,10 @@ func processKeys(e *engine.Engine, win *pixelgl.Window) {
 
 	if win.JustPressed(pixelgl.KeyA) {
 		moveRotate = true
-		e.RotateLeft(speed)
+		e.RotateLeft(rotateSpeed)
 	} else if win.JustPressed(pixelgl.KeyD) {
 		moveRotate = true
-		e.RotateRight(speed)
+		e.RotateRight(rotateSpeed)
 	} else if moveRotate && !win.Pressed(pixelgl.KeyA) && !win.Pressed(pixelgl.KeyD) {
 		moveRotate = false
 		e.RotateLeft(0)
@@ -120,10 +135,10 @@ func processKeys(e *engine.Engine, win *pixelgl.Window) {
 
 	if win.JustPressed(pixelgl.KeyW) {
 		moveZAxis = true
-		e.Up(speed)
+		e.Up(moveSpeed)
 	} else if win.JustPressed(pixelgl.KeyS) {
 		moveZAxis = true
-		e.Down(speed)
+		e.Down(moveSpeed)
 	} else if moveZAxis && !win.Pressed(pixelgl.KeyW) && !win.Pressed(pixelgl.KeyS) {
 		moveZAxis = false
 		e.Up(0)
