@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 
 	"github.com/eleniums/tello-engine/engine"
 	"github.com/faiface/pixel"
@@ -83,10 +84,16 @@ func processKeys(e *engine.Engine, win *pixelgl.Window) {
 		if moveSpeed < minSpeed {
 			moveSpeed = minSpeed
 		}
+		if engine.Debug {
+			log.Printf("Move speed decreased to: %v", moveSpeed)
+		}
 	} else if win.JustPressed(pixelgl.KeyP) {
 		moveSpeed += 10
 		if moveSpeed > maxSpeed {
 			moveSpeed = maxSpeed
+		}
+		if engine.Debug {
+			log.Printf("Move speed increased to: %v", moveSpeed)
 		}
 	}
 
@@ -95,10 +102,16 @@ func processKeys(e *engine.Engine, win *pixelgl.Window) {
 		if rotateSpeed < minSpeed {
 			rotateSpeed = minSpeed
 		}
+		if engine.Debug {
+			log.Printf("Rotate speed decreased to: %v", rotateSpeed)
+		}
 	} else if win.JustPressed(pixelgl.KeyI) {
 		rotateSpeed += 10
 		if rotateSpeed > maxSpeed {
 			rotateSpeed = maxSpeed
+		}
+		if engine.Debug {
+			log.Printf("Rotate speed increased to: %v", rotateSpeed)
 		}
 	}
 
