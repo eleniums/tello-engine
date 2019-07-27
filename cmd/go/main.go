@@ -21,8 +21,7 @@ func main() {
 	win := run()
 
 	for !win.Closed() {
-		win.Clear(colornames.Whitesmoke)
-		win.Update()
+		processKeys(win)
 	}
 }
 
@@ -38,4 +37,19 @@ func run() *pixelgl.Window {
 	}
 
 	win.SetSmooth(true)
+}
+
+func processKeys(*pixelgl.Window) {
+	if win.Pressed(pixelgl.KeyLeft) {
+		e.Left()
+	}
+	if win.Pressed(pixelgl.KeyRight) {
+		e.Right()
+	}
+	if win.Pressed(pixelgl.KeyUp) {
+		e.Forward()
+	}
+	if win.Pressed(pixelgl.KeyDown) {
+		e.Backward()
+	}
 }
