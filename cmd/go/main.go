@@ -41,9 +41,11 @@ func run() *pixelgl.Window {
 	}
 
 	win.SetSmooth(true)
+
+	return win
 }
 
-func processKeys(e *engine.Engine, *pixelgl.Window) {
+func processKeys(e *engine.Engine, win *pixelgl.Window) {
 	if win.Pressed(pixelgl.KeyX) {
 		e.TakeOff()
 	} else if win.Pressed(pixelgl.KeyZ) {
@@ -55,7 +57,7 @@ func processKeys(e *engine.Engine, *pixelgl.Window) {
 	} else if win.JustPressed(pixelgl.KeyP) {
 		speed += 10
 	}
-	
+
 	if win.Pressed(pixelgl.KeyLeft) {
 		e.Left(speed)
 	} else if win.Pressed(pixelgl.KeyRight) {
@@ -66,7 +68,7 @@ func processKeys(e *engine.Engine, *pixelgl.Window) {
 		e.Forward(speed)
 	} else if win.Pressed(pixelgl.KeyDown) {
 		e.Backward(speed)
-	} 
+	}
 
 	if win.Pressed(pixelgl.KeyA) {
 		e.RotateLeft(speed)
@@ -94,7 +96,7 @@ func processKeys(e *engine.Engine, *pixelgl.Window) {
 		e.Bounce()
 	}
 
-	if win.Pressed(pixelgl.KeySpacebar) {
+	if win.Pressed(pixelgl.KeySpace) {
 		e.ResetMovement()
 	}
 }
