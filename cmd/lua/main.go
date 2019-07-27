@@ -6,7 +6,8 @@ import (
 	"os"
 
 	"github.com/eleniums/tello-engine/engine"
-	"github.com/yuin/gopher-lua"
+
+	lua "github.com/yuin/gopher-lua"
 )
 
 func main() {
@@ -21,6 +22,7 @@ func main() {
 
 	// prepare to handle input and start the drone
 	e := engine.NewEngine()
+	e.AddKeyboardDevice()
 	e.Start(false)
 	defer e.Stop()
 
