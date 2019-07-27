@@ -59,7 +59,7 @@ func main() {
 func run() (*pixelgl.Window, error) {
 	cfg := pixelgl.WindowConfig{
 		Title:  "tello-go",
-		Bounds: pixel.R(0, 0, 1024, 768),
+		Bounds: pixel.R(0, 0, 480, 360),
 		VSync:  true,
 	}
 	win, err := pixelgl.NewWindow(cfg)
