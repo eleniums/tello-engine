@@ -14,7 +14,12 @@ brew install mplayer
 ## Run
 First, connect to the Tello drone via Wi-Fi. It will be named something similar to "TELLO-XXXXXX". Then run the program:
 ```
-go run ./cmd/main.go ./scripts/basic.lua
+go run ./cmd/lua/main.go ./scripts/basic.lua
+```
+
+For a pure Go, non-scripted experience, run:
+```
+go run ./cmd/go/main.go
 ```
 
 ## Technologies
@@ -26,6 +31,8 @@ go run ./cmd/main.go ./scripts/basic.lua
     - https://github.com/hybridgroup/gobot
 - MPlayer:
     - http://www.mplayerhq.hu
+- Pixel for keyboard input:
+    - https://github.com/faiface/pixel
 
 ## Available lua commands
 - `sleep(milliseconds)`: Sleep for the given number of milliseconds.
