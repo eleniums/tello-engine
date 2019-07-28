@@ -58,7 +58,7 @@ func main() {
 
 func run() (*pixelgl.Window, error) {
 	cfg := pixelgl.WindowConfig{
-		Title:  "tello-go",
+		Title:  "tello-engine",
 		Bounds: pixel.R(0, 0, 480, 360),
 		VSync:  true,
 	}
