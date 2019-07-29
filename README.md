@@ -1,6 +1,6 @@
 # tello-engine
 
-[![GoDoc](https://godoc.org/github.com/eleniums/tello-engine?status.svg)](https://godoc.org/github.com/eleniums/tello-engine) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/eleniums/gohost/blob/master/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/eleniums/tello-engine)](https://goreportcard.com/report/github.com/eleniums/tello-engine) [![GoDoc](https://godoc.org/github.com/eleniums/tello-engine?status.svg)](https://godoc.org/github.com/eleniums/tello-engine) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/eleniums/gohost/blob/master/LICENSE)
 
 Engine created in Go to control a Tello drone using Gobot, with Lua as a scripting language. Yet another fun hackathon project.
 
