@@ -1,0 +1,34 @@
+# github.com/faiface/glhf v0.0.0-20181018222622-82a6317ac380
+github.com/faiface/glhf
+# github.com/faiface/mainthread v0.0.0-20171120011319-8b78f0a41ae3
+github.com/faiface/mainthread
+# github.com/faiface/pixel v0.8.0
+github.com/faiface/pixel
+github.com/faiface/pixel/pixelgl
+# github.com/go-gl/gl v0.0.0-20190320180904-bf2b1f2f34d7
+github.com/go-gl/gl/v3.3-core/gl
+# github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1
+github.com/go-gl/glfw/v3.2/glfw
+# github.com/go-gl/mathgl v0.0.0-20190713194549-592312d8590a
+github.com/go-gl/mathgl/mgl32
+# github.com/gobuffalo/uuid v2.0.5+incompatible
+github.com/gobuffalo/uuid
+# github.com/gofrs/uuid v3.2.0+incompatible
+github.com/gofrs/uuid
+# github.com/hashicorp/errwrap v1.0.0
+github.com/hashicorp/errwrap
+# github.com/hashicorp/go-multierror v1.0.1-0.20190722213833-bdca7bb83f60
+github.com/hashicorp/go-multierror
+# github.com/pkg/errors v0.8.1
+github.com/pkg/errors
+# github.com/yuin/gopher-lua v0.0.0-20190514113301-1cd887cd7036
+github.com/yuin/gopher-lua
+github.com/yuin/gopher-lua/ast
+github.com/yuin/gopher-lua/parse
+github.com/yuin/gopher-lua/pm
+# gobot.io/x/gobot v1.13.1-0.20190625051317-c7d6ea7569c3
+gobot.io/x/gobot
+gobot.io/x/gobot/platforms/dji/tello
+gobot.io/x/gobot/platforms/keyboard
+# golang.org/x/image v0.0.0-20190703141733-d6a02ce849c9
+golang.org/x/image/math/f32
